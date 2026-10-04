@@ -1,16 +1,87 @@
-# React + Vite
+# Swamp Recall
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A memory card game themed around the animated series *Amphibia*. Click each character once, and never the same one twice. Built with React.
 
-Currently, two official plugins are available:
+**[Live demo](<your-deployed-url>)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Screenshot of the game](./docs/screenshot1.png) 
+![Screenshot of the game](./docs/screenshot2.png) 
 
-## React Compiler
+## How to play
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Eight character cards are shown in a random order.
+- Click a card you haven't picked yet: your score goes up by 1 and the cards reshuffle.
+- Click a card you've already picked: the round ends, your score resets to 0, and the grid shakes.
+- Pick all 8 without a repeat to win.
+- Your best score is tracked across rounds.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Character names and images fetched from the TVmaze API
+- Cards reshuffle on mount and after every click (Fisher-Yates shuffle)
+- Current score and best score
+- Win modal with a Play Again button
+- Loss feedback: grid shake and a red score flash
+- Loading and error states
+- Responsive layout, with `prefers-reduced-motion` respected
+
+## Built with
+
+- [React](https://react.dev/) (hooks: `useState`, `useEffect`, plus a custom `useCharacters` hook)
+- [Vite](https://vitejs.dev/)
+- Plain CSS (Grid, Flexbox, custom properties, keyframe animations)
+- [TVmaze API](https://www.tvmaze.com/api) for character data
+
+## Getting started
+
+```bash
+git clone https://github.com/Dee-pack/memory-card.git
+cd memory-card
+npm install
+npm run dev
+```
+
+The app runs at `http://localhost:5173`.
+
+To create a production build:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project structure
+
+```
+src/
+  components/
+    Card.jsx
+    CardGrid.jsx
+    Scoreboard.jsx
+    WinModal.jsx
+  hooks/
+    useCharacters.js   # fetches and shapes API data
+  utils/
+    shuffle.js         # Fisher-Yates shuffle
+  App.css 
+  App.jsx              # game state and logic
+  main.jsx
+```
+
+## What I learned
+
+- Managing state in one place and passing data down through props
+- Deriving values (score, win condition) instead of duplicating state
+- Fetching data in `useEffect` with cleanup to avoid stale updates
+- Using stable `key` props when list order changes
+- Conditional rendering and class toggling for animations
+
+## Credits
+
+- Character data and images via the [TVmaze API](https://www.tvmaze.com/api)
+- Fonts: Bangers and Fredoka from Google Fonts
+- *Amphibia* and its characters belong to Disney and creator Matt Braly. This is a non-commercial fan project and isn't affiliated with or endorsed by them.
+
+## Author
+
+**[Dee Pack]** · [GitHub](https://github.com/Dee-pack) · [LinkedIn](https://www.linkedin.com/in/daniel-pinmiloye-631b8b375/)

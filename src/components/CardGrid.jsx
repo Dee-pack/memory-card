@@ -1,8 +1,8 @@
-// components/CardGrid.jsx
 import Card from "./Card";
-export default function CardGrid({ cards, onCardClick }) {
+
+export default function CardGrid({ cards, onCardClick, lost }) {
   return (
-    <div className="grid">
+    <div className={`grid ${lost ? "shake" : ""}`}>
       {cards.map((c) => (
         <Card key={c.id} card={c} onClick={onCardClick} />
       ))}
