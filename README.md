@@ -2,7 +2,7 @@
 
 A memory card game themed around the animated series *Amphibia*. Click each character once, and never the same one twice. Built with React.
 
-**[Live demo](<your-deployed-url>)**
+**[Live demo](https://memory-card-seven.vercel.app/)**
 
 ![Screenshot of the game](./docs/screenshot1.png) 
 ![Screenshot of the game](./docs/screenshot2.png) 
